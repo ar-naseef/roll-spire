@@ -110,7 +110,7 @@ const Login = () => {
               )}
             </Button>
             <Typography variant="body2">
-              New to rollspire?
+              New to Comeesy?
               <Typography
                 variant="body2"
                 component={Link}

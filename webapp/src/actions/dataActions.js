@@ -1,4 +1,4 @@
-import rollspireAPI from '../api/rollspire';
+import comeesyAPI from '../api/comeesy';
 import history from '../utils/history';
 import { dataTypes } from './types';
 import { hasAuthorization } from './userActions';
@@ -11,7 +11,7 @@ export const loadingData = () => ({ type: dataTypes.LOADING_DATA });
 export const getProfile = username => dispatch =>
   new Promise(async (resolve, reject) => {
     dispatch(loadingData());
-    rollspireAPI
+    comeesyAPI
       .get(`/user/${username}`)
       .then(res => {
         dispatch({
@@ -32,7 +32,7 @@ export const getProfile = username => dispatch =>
 export const getPosts = () => dispatch =>
   new Promise(async (resolve, reject) => {
     dispatch(loadingData());
-    rollspireAPI
+    comeesyAPI
       .get('/posts')
       .then(response => {
         dispatch({
@@ -54,7 +54,7 @@ export const getPosts = () => dispatch =>
 export const getPost = postId => dispatch =>
   new Promise(async (resolve, reject) => {
     dispatch(loadingData());
-    rollspireAPI
+    comeesyAPI
       .get(`/post/${postId}`)
       .then(response => {
         dispatch({
@@ -71,7 +71,7 @@ export const getPost = postId => dispatch =>
 export const getCommentReplies = (postId, commentId) => dispatch =>
   new Promise(async (resolve, reject) => {
     dispatch(loadingData());
-    rollspireAPI
+    comeesyAPI
       .get(`/post/${postId}/comment/${commentId}/replies`)
       .then(response => {
         dispatch({
@@ -95,7 +95,7 @@ export const createPost = body => dispatch =>
         return dispatch(openModal(Login));
       }
       dispatch(loadingData());
-      const response = await rollspireAPI.post(
+      const response = await comeesyAPI.post(
         '/post',
         { body },
         {
@@ -128,7 +128,7 @@ export const createComment = (postId, body) => dispatch =>
         return dispatch(openModal(Login));
       }
       dispatch(loadingData());
-      const response = await rollspireAPI.post(
+      const response = await comeesyAPI.post(
         `/post/${postId}/comment`,
         { body },
         {
@@ -158,7 +158,7 @@ export const createCommentReply = (postId, commentId, body) => dispatch =>
         return dispatch(openModal(Login));
       }
       dispatch(loadingData());
-      const response = await rollspireAPI.post(
+      const response = await comeesyAPI.post(
         `/post/${postId}/comment/${commentId}/reply`,
         { body },
         {
@@ -188,7 +188,7 @@ export const deletePost = postId => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.delete(`/post/${postId}`, {
+      const response = await comeesyAPI.delete(`/post/${postId}`, {
         headers: { Authorization: token },
       });
       dispatch({
@@ -213,7 +213,7 @@ export const deleteComment = (postId, commentId) => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.delete(
+      const response = await comeesyAPI.delete(
         `/post/${postId}/comment/${commentId}`,
         {
           headers: { Authorization: token },
@@ -238,7 +238,7 @@ export const deleteCommentReply = (postId, commentId, replyId) => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.delete(
+      const response = await comeesyAPI.delete(
         `/post/${postId}/comment/${commentId}/reply/${replyId}`,
         {
           headers: { Authorization: token },
@@ -263,7 +263,7 @@ export const like = postId => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.post(`/post/${postId}/like`, null, {
+      const response = await comeesyAPI.post(`/post/${postId}/like`, null, {
         headers: { Authorization: token },
       });
 
@@ -286,7 +286,7 @@ export const unlike = postId => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.post(`/post/${postId}/unlike`, null, {
+      const response = await comeesyAPI.post(`/post/${postId}/unlike`, null, {
         headers: { Authorization: token },
       });
 

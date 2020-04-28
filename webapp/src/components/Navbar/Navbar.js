@@ -72,7 +72,7 @@ const Navbar = () => {
           color="inherit"
         >
           <Logo variant="white" className={classes.logo} />
-          rollspire
+          COMEESY
         </Typography>
 
         <div className={classes.grow} />
@@ -91,28 +91,28 @@ const Navbar = () => {
               />
             </Fragment>
           ) : (
-              <Fragment>
-                <Button
-                  component={Link}
-                  to="/auth/login"
-                  color="inherit"
-                  size="small"
-                  className={classes.navLink}
-                >
-                  Log in
+            <Fragment>
+              <Button
+                component={Link}
+                to="/auth/login"
+                color="inherit"
+                size="small"
+                className={classes.navLink}
+              >
+                Log in
               </Button>
-                <Button
-                  component={Link}
-                  to="/auth/login"
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                  className={classes.navLink}
-                >
-                  Sign up
+              <Button
+                component={Link}
+                to="/auth/login"
+                variant="contained"
+                color="primary"
+                size="small"
+                className={classes.navLink}
+              >
+                Sign up
               </Button>
-              </Fragment>
-            )}
+            </Fragment>
+          )}
         </nav>
       </Toolbar>
     </AppBar>

@@ -14,7 +14,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-// console.log(firebaseConfig);
 try {
   firebase.initializeApp(firebaseConfig);
   firebase.firestore();

@@ -1,4 +1,4 @@
-import rollspireAPI from '../api/rollspire';
+import comeesyAPI from '../api/comeesy';
 import history from '../utils/history';
 import { userTypes } from './types';
 import { openModal, closeModal } from './uiActions';
@@ -89,7 +89,7 @@ export const signup = data => dispatch =>
   new Promise((resolve, reject) => {
     dispatch(loadingUser());
 
-    rollspireAPI
+    comeesyAPI
       .post('/auth/signup', data)
       .then(() => {
         dispatch(login(data));
@@ -137,7 +137,7 @@ export const getUserOwnData = () => dispatch =>
 
       dispatch(loadingUser());
 
-      const response = await rollspireAPI.get('/user', {
+      const response = await comeesyAPI.get('/user', {
         headers: { Authorization: token },
       });
 
@@ -166,7 +166,7 @@ export const updateUserDetails = data => dispatch =>
 
       dispatch(loadingUser());
 
-      const response = await rollspireAPI.post('/user/details', data, {
+      const response = await comeesyAPI.post('/user/details', data, {
         headers: { Authorization: token },
       });
 
@@ -191,7 +191,7 @@ export const updateUserCredentials = data => dispatch =>
 
       dispatch(loadingUser());
 
-      const response = await rollspireAPI.post('/user/credentials', data, {
+      const response = await comeesyAPI.post('/user/credentials', data, {
         headers: { Authorization: token },
       });
       resolve(response.data);
@@ -216,7 +216,7 @@ export const uploadUserAvatar = formData => dispatch =>
 
       dispatch(loadingUser());
 
-      const response = await rollspireAPI.post('/user/avatar', formData, {
+      const response = await comeesyAPI.post('/user/avatar', formData, {
         headers: { Authorization: token },
       });
 
@@ -240,7 +240,7 @@ export const markNotificationsRead = notificationIds => dispatch =>
         return dispatch(openModal(Login));
       }
 
-      const response = await rollspireAPI.post(
+      const response = await comeesyAPI.post(
         '/notifications/markRead',
         notificationIds,
         {
